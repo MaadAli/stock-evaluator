@@ -47,7 +47,7 @@ describe('getCurrentStock', () => {
       await getCurrentStock('type');
     } catch (err: unknown) {
       if (err instanceof Error) {
-        expect(err.message).toBe('No such sku exist in transactions');
+        expect(err.message).toBe('No such sku exists');
       } else {
         console.log('Unknown Error detected');
       }
