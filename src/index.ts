@@ -31,19 +31,3 @@ export const getInventoryStock = (sku: string): number => {
     return stockPile.sku === sku ? (result += stockPile.stock) : result;
   }, 0);
 };
-
-const main = async(): Promise<void> => {
-    try {
-        console.log(`here`);
-        const stockInfo = await getCurrentStock('EDI062104/16/63');
-        console.log(`Stock for given sku: ${stockInfo.sku} is ${stockInfo.qty}`);
-      } catch (err: unknown) {
-        if (err instanceof Error) {
-          console.log(`Error message: ${err.message}`);
-        } else {
-          console.log('Unknown Error detected');
-        }
-      }
-}
-
-main()

@@ -1,4 +1,4 @@
 export default {
-    ORDER: 'order',
-    REFUND: 'refund'
+  ORDER: 'order',
+  REFUND: 'refund'
 }
