@@ -1,18 +1,18 @@
 import stock from './stock.json';
-import { inventory } from './types';
+import { products } from './types';
 
 
 //get the qty of a given sku added in inventory
-export const getInventoryStock = (sku: string): number => {
-  return stock.reduce((result: number, stockPile: inventory) => {
-    return stockPile.sku === sku ? (result += stockPile.stock) : result;
+export const getProductStock = (sku: string): number => {
+  return stock.reduce((result: number, product: products) => {
+    return product.sku === sku ? (result += product.stock) : result;
   }, 0);
 };
 
 
 //filters out the skus in the stock data
-export const getStockSkus = (sku: string): inventory[] => {
+export const getProductSkus = (sku: string): products[] => {
   return stock.filter(
-    (t: inventory) => t.sku === sku
+    (t: products) => t.sku === sku
   );
 }

@@ -5,7 +5,7 @@ import {
   getTransactionalStock,
 } from '../src/transaction-service';
 import {
-  getInventoryStock,
+  getProductStock,
 } from '../src/stock-service';
 describe('getCurrentStock', () => {
   it('returns the correct stock for a valid SKU', async () => {
@@ -17,7 +17,7 @@ describe('getCurrentStock', () => {
   });
 
   it('returns the correct inventory stock for a valid SKU', () => {
-    expect(getInventoryStock('EDI062104/16/63')).toEqual(5995);
+    expect(getProductStock('EDI062104/16/63')).toEqual(5995);
   });
 
   it('throws an error for an empty or invalid SKU', async() => {
@@ -48,7 +48,7 @@ describe('getCurrentStock', () => {
   it('throws an error if there is no transactional stock for the given SKU', async() => {
     expect.assertions(1);
     try {
-      await getCurrentStock('type');
+      await getCurrentStock('abcd');
     } catch (err: unknown) {
       if (err instanceof Error) {
         expect(err.message).toBe('No such sku exists');
@@ -59,6 +59,6 @@ describe('getCurrentStock', () => {
   });
 
   it('returns 0 if no such sku exist in stock', () => {
-    expect(getInventoryStock('type')).toEqual(0);
+    expect(getProductStock('type')).toEqual(0);
   });
 });
