@@ -1,8 +1,12 @@
 import {
   getCurrentStock,
-  getInventoryStock,
-  getTransactionalStock,
 } from '../src/index';
+import {
+  getTransactionalStock,
+} from '../src/transaction-service';
+import {
+  getInventoryStock,
+} from '../src/stock-service';
 describe('getCurrentStock', () => {
   it('returns the correct stock for a valid SKU', async () => {
     expect(await getCurrentStock('EDI062104/16/63')).toEqual({'sku': 'EDI062104/16/63', qty: 5879});
